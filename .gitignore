@@ -1,0 +1,2 @@
+# ignorar los archivos de texto para no subir los comentarios.
+*.txt

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>X-&Aacute;nime - Portal</title>
+		<link rel="shortcut icon" type="image/jpg" href="x-anime - logo.jpg" />
+		<meta name="author" content="Davian Nina Acevedo" />
+		<meta name="robots" content="all" />
+		<meta name="classification" content="entretenimiento, animacion" />
+		<meta name="description" content="Pagina de entretenimiento animado, que busca el deleite y creciente interes del usuario por el anime mediante su introduccion en dicho mundo con nuestro contenido." />
+		<meta name="keywords" content="anime, manga, cosplay, galeria, imagenes, multimedia, musica, audio, video" />
+		<script type="text/javascript" src="js/img_setter.js">
+			/*
+			solo contiene una funcion que le inicializa el atributo TITLE automaticamente a las imagenes que no lo tienen definido
+			*/
+		</script>
+		<script type="text/javascript" src="js/cookies.js"></script>
+	</head>
+	<body bgcolor="#303030" background="img/img_fondo.jpg" style="background-attachment:fixed; background-repeat:no-repeat; background-position:center; background-size: cover" onload="setImgTitle()">
+		<form name="frm_inic_sesion" method="post" action="#">
+			<table bgcolor="#ffffcd" name="treg" align="right">
+				<caption><h3 style="background-color: #123456; color: white">Iniciar sesi&oacute;n</h3></caption>
+				<tr>
+					<td rowspan="4">
+						<img src="img/img_llave-login.png" height="195" width="110" hspace="6" vspace="6" />
+					</td>
+					<td>Usuario:</td>
+					<td>
+						<input type="text" name="user" onkeypress="validaNumeros(event)" />
+					</td>
+				</tr>
+				<tr>
+					<td>Contrase&ntilde;a:</td>
+					<td>
+						<input type="password" name="clave"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" value="Ingresar" accesskey="i" onkeypress="act(event)" />
+					</td>
+					<td>
+						<input type="reset" value="Borrar" />
+					</td>
+				</tr>
+				<tr>
+					<th colspan="2"><br/><a href="registro.html">Reg&iacute;strate</a></th>
+				</tr>
+			</table>
+		</form>
+		<br/>
+		<table name="mtable" align="center" width="75%">
+			<caption>
+				<h1 align="center" style="background-color:#ffffcd">Bienvenido a X-&Aacute;nime</h1>
+			</caption>
+			<tr bgcolor="#123456" height="282">
+				<td>
+					<marquee scrolldelay="15" scrollamount="4" loop="-1" direction="right" behavior="alternate">
+						<img src="x-anime - logo.jpg" width="180" height="180" alt="X-&Aacute;nime. Entretenimiento oriental"
+						vspace="20"	onmouseover="this.width='230'; this.height='230'"
+						onmouseout="this.width='180'; this.height='180'" />
+					</marquee>
+				</td>
+			</tr>
+			<tr bgcolor="#ffffcd">
+				<td>
+					<h2 align="center">Esto es X-&Aacute;nime</h2>
+					<blockquote>
+						<p align="justify">
+							<font size="+1">Una p&aacute;gina de entretenimiento esencialmente <i>animado</i>. Esta p&aacute;gina est&aacute; condicionada para el deleite y creciente inter&eacute;s de los usuarios mediante la introducci&oacute;n de los mismos en el mundo del &aacute;nime con nuestro contenido.</font>
+						</p>
+					</blockquote>
+				</td>
+			</tr>
+			<tr bgcolor="#ffffdf">
+				<td>
+					<h2 align="center">Temas</h2>
+					<blockquote>
+						<p align="justify"><font size="5"><i>Si te interesan los temas sobre inform&aacute;tica, te recomendamos el blog de nuestro dise&ntilde;ador:</i></font>
+						<a href="http://bitecn608.simplesite.com" target="_blank"><font color="#205E9C" size="5">Bitecn 608</font></a>.</p>
+						<hr size="2.75" width="100%" color="navy" />
+						<br/>
+
+						<p align="justify">Lee un art&iacute;culo de todos los temas: sobre <a href="inicio.html">Breve historia del &aacute;nime. Manga y cosplay</a>.<br/>
+						Si s&oacute;lo te interesa uno de los anteriores, s&oacute;lo selecci&oacute;nalo:</p>
+						<ul type="circle">
+							<li><a href="inicio.html#anime">&Aacute;nime</a></li>
+							<li><a href="inicio.html#manga">&iquest;Qu&eacute; es el Manga?</a></li>
+							<li><a href="inicio.html#cosplay">Cosplay</a></li>
+						</ul>
+						<hr size="2.75" width="100%" color="navy" />
+						<br/>
+						<h2 align="center">Multimedia</h2>
+						<img src="img/img_audio.png" height="245" width="210" align="right" />
+						<p align="justify">Entre las opciones de multimedia tienes:</p>
+						<ol>
+							<li><a href="galeria.html" title="Ver la diversidad de im&aacute;genes">Galer&iacute;a</a>. Visita la galer&iacute;a para ver la diversidad de im&aacute;genes.</li>
+							<li><a href="musica.html">M&uacute;sica</a>. Escucha algunas de las destacadas canciones de <i>openings</i> o <i>endings</i> que llevan algunas series.</li>
+							<li><a href="video.html">Videos</a>. Mira los videos de otros openings y endings interesantes.</li>
+						</ol>
+						<br clear="right" />
+						<hr size="2.75" width="100%" color="navy" />
+						<br/>
+						<h2 align="center">Contactos</h2>
+						<p align="justify">Puedes hacer contacto con el dise&ntilde;ador de esta p&aacute;gina, ver su <a href="perfil.html">perfil</a>, su <a href="http://bitecn608.simplesite.com">blog</a>, enviarnos correos electr&oacute;nicos, etc.<br/>
+						<a href="contacto.php">Obt&eacute;n m&aacute;s detalles.</a></p>
+						<hr size="2.75" width="100%" color="navy" />
+						<br/>
+						<h2 align="center">Registro</h2>
+						<p>En <a href="registro.html">registro</a> encontrar&aacute;s un <i>formulario de registro</i> para que formes parte de nosotros estando al tanto de cualquier actualizacion realizada.</p>
+						<br/>
+					</blockquote>
+				</td>
+			</tr>
+			<tr bgcolor="#ddcdfd">
+				<td height="45">
+					<blockquote>
+						<address>P&aacute;gina por: Davian Nina Acevedo | Rep&uacute;blica Dominicana</address>
+					</blockquote>
+				</td>
+			</tr>
+		</table>
+		<br/><br/><br/>
+		<table align="center" cellspacing="10" width="90%" bgcolor="#ffffcd">
+			<caption><h2 style="background-color: #123456; color: white">Sugerencias</h2></caption>
+			<tr>
+				<td align="center" colspan="3">
+					<p>En esta p&aacute;gina tratamos los temas de manera conceptual, hist&oacute;rica e informativa. No obstante tenemos la intenci&oacute;n de ofrecer la visualizaci&oacute;n de las variadas series en nuestra propia plataforma.</p>
+					<p>Por lo pronto, aqu&iacute; te tenemos algunas sugerencias de cada categor&iacute;a.</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border: 1px solid #123456">
+					<center>
+						<h3>&Aacute;nime</h3>
+						<hr width="150" size="1" color="teal"/>
+					</center>
+					<ul type="circle">
+						<li><a href="http://jkanime.net" target="_blank">Jk anime</a></li>
+						<li><a href="http://mundo-animex.org" target="_blank">Mundo-animex</a></li>
+					</ul>
+				</td>
+				<td style="border: 1px solid #123456">
+					<center>
+						<h3>Manga</h3>
+						<hr width="150" size="1" color="teal"/>
+					</center>
+					<ul type="circle">
+						<li><a href="http://tumangaonline.com" target="_blank">Tu manga online</a></li>
+						<li><a href="http://mangaslml.com" target="_blank">Mangas lml</a></li>
+					</ul>
+				</td>
+				<td style="border: 1px solid #123456">
+					<center>
+						<h3>Cosplay</h3>
+						<hr width="150" size="1" color="teal"/>
+					</center>
+					<ul type="circle">
+						<li><a href="http://worldcosplay.net" target="_blank">World Cosplay</a></li>
+						<li type="none"><br/></li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

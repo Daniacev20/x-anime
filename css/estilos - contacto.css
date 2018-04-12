@@ -1,0 +1,29 @@
+form {
+	width: 100%;
+}
+input[name="txtemail"] {
+	width: 240px;
+}
+#txtamensaje {
+	min-height: 80px;
+	max-height: 80px;
+	min-width: 600px;
+	max-width: 600px;
+}
+.comentado {
+	width: 85%;
+	background-color: #ffffcd;
+	border: 2px solid #C6C6C6;
+	padding: 3px;
+	text-align: justify;
+	margin: 7.5px;
+}
+#destino {
+	width: 90%;
+	padding: 15px;
+	overflow: auto;
+}
+#ncomentarios {
+	color: white;
+	text-align: right;
+}

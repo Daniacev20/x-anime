@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>X-&Aacute;nime - &Aacute;nime</title>
+		<link rel="shortcut icon" type="image/jpg" href="x-anime - logo.jpg" />
+		<link rel="stylesheet" type="text/css" href="css/btnslide.css" />
+		<meta name="author" content="Davian Nina Acevedo" />
+		<meta name="robots" content="all" />
+		<meta name="classification" content="entretenimiento, animacion" />
+		<meta name="description" content="Pagina de entretenimiento animado, que busca el deleite y creciente interes del usuario por el anime mediante su introduccion en dicho mundo con nuestro contenido." />
+		<meta name="keywords" content="anime, manga, cosplay, galeria, imagenes, multimedia, musica, audio, video" />
+		<script type="text/javascript" src="js/img_setter.js"></script>
+		<script type="text/javascript" src="js/ia_v_img.js"></script>
+	</head>
+	<body bgcolor="#303030" background="img/img_fondo.jpg" style="background-attachment:fixed; background-repeat:no-repeat; background-position:center; background-size: cover" onload="setImgTitle();">
+		<table align="center" width="70%" cellspacing="0">
+			<tr bgcolor="#123456">
+			<td colspan="2">
+				<h1 align="center" style="background: teal">
+					<marquee scrollamount="6" scrolldelay="18" direction="right" behavior="alternate" loop="-1"
+					onmouseover="this.stop(); this.style.background='orange'" onmouseout="this.start(); this.style.background='teal'">
+					Galer&iacute;a de X-&Aacute;nime
+					</marquee>
+				</h1>
+			</td>
+			</tr>
+			<tr bgcolor="#ffffdf">
+				<td>
+				<ul type="circle">
+					<font size="+1"><a name="inicio">Men&uacute;</a></font>
+					<li><a href="index.html" title="P&aacute;gina principal">X-&Aacute;nime</a></li>
+					<li><a href="contacto.php" title="Contacto">Contacto</a></li>
+				</ul>
+				</td>
+				<td>
+					<ul type="circle">
+						<li type="none">&nbsp;</li>
+						<li><a href="imanga.html">Manga</a>
+						<li><a href="icosplay.html">Cosplay</a>
+					</ul>
+				</td>
+			</tr>
+			<tr bgcolor="#ffffdf">
+				<td colspan="2">
+					<form name="f">
+						<blockquote>
+							<label for="vista">Selecciona la forma de visualizar las imagenes:&nbsp;</label>
+							<select id="vista" name="vista" onchange="seleccion()">
+								<option value="0">Seleccione un metodo</option>
+								<option value="1">Una</option>
+								<option value="2">Cuatro</option>
+								<option value="3">Todas</option>
+							</select>
+							<span id="ctodas"></span>
+						</blockquote>
+					</form>
+					<table id="tblprinc" name="tblprinc" cellspacing="10" align="center">
+					</table>
+					<div id="imgcounter"></div>
+					<table id="tblsobrante" cellpadding="0" cellspacing="8" align="center" border="0">
+						<tr><th id="fstitulo"></th></tr>
+						<tr id="fsobrante"></tr>
+					</table>
+					<p style="margin-left:15px; width: 150px;"><a href="#inicio">Volver arriba</a></p>
+				</td>
+			</tr>
+			<tr bgcolor="#ddcdfd">
+				<td colspan="2">
+					<p>Im&aacute;genes por: <i>Davian Nina Acevedo</i></p>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
