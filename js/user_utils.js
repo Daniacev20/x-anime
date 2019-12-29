@@ -1,90 +1,45 @@
-// javascript document to ianime.html
+// helping javascript document
 
-// rutas de las imagenes cosplay.
-var imgs = ["nbs/icos.jpg", "nbs/icos1.jpg", "nbs/icos2.jpg", "nbs/icos3.jpg", "nbs/icos4.jpg", "nbs/icos5.jpg", "nbs/icos6.jpg", "nbs/icos7.jpg", "nbs/icos8.jpg", "nbs/icos9.jpg", "nbs/icos10.jpg", "nbs/icos11.jpg", "nbs/icos12.jpg", "nbs/icos13.jpg", "nbs/icos14.jpg", "nbs/icos15.jpg"];
-
-// vista1: primera opcion.
-var TVista1 = "<tr><td><input type=\"button\" id=\"btnanterior\" value=\"Anterior\" accesskey=\"a\" onclick=\"anterior(1)\" /></td><td><img src=\"\" height=\"600\" width=\"600\"  name=\"imguno\" alt=\"imguno\" /></td><td><input type=\"button\" id=\"btnsiguiente\" value=\"Siguiente\" accesskey=\"s\" onclick=\"siguiente(1)\" /></td></tr>";
-
-// vista2: segunda .
-var TVista2 = "<tr><td rowspan=\"2\"><input type=\"button\" id=\"btnanterior\" value=\"Anterior\" accesskey=\"a\" onclick=\"anterior(2)\" /></td><td><img src=\"\" name=\"imgcuadro\" height=\"300\" width=\"300\" alt=\"img1\" /></td><td><img src=\"\" name=\"imgcuadro\" height=\"300\" width=\"300\" alt=\"img2\" /></td><td rowspan=\"2\"><input type=\"button\" id=\"btnsiguiente\" value=\"Siguiente\" accesskey=\"s\" onclick=\"siguiente(2)\" /></td></tr><tr><td><img src=\"\" name=\"imgcuadro\" height=\"300\" width=\"300\" alt=\"img3\" /></td><td><img src=\"\" name=\"imgcuadro\" height=\"300\" width=\"300\" alt=\"img4\" /></td></tr>";
+// se definen varias funciones comunes a los archivos que
+// que manejan las galerias.
+// ademas, se agregan metodos a objetos que seran utilizados
+// en funciones manejadoras.
 
 // extender la clase Array para simplificar la buqueda de elementos dentro de los mismos.
-Array.prototype.indexOf = function(cad)
-{
-	for (var i = 0; i < this.length; i++)
-	{
+Array.prototype.indexOf = function(cad) {
+	for (var i = 0; i < this.length; i++) {
 		if (this[i] == cad)
-		{
 			return i;
-		}
-		else
-		{
-			continue;
-		}
 	}
+
 	return -1;
 }
 
-Array.prototype.copy = function(original)
-{
+Array.prototype.copy = function(original) {
 	for (var i = 0; i < original.length; i++)
-	{
 		this.push(original[i]);
-	}
+
 	return this;
 }
 
-function p20(cad) // reemplaza cada aparicion de la subcadena "%20" por un espacio en blaco y la devuelve
-{
-	var str = "";
-	if (typeof(cad).toString().toLowerCase() != "string")
-	{
-		return null;
-	}
-	else
-	{
-		for (var q = 0; q < cad.length; q++)
-		{
-			if (cad[q] + cad[q + 1] + cad[q + 2] == "%20")
-			{
-				str += " ";
-				q += 2;
-			}
-			else
-			{
-				str += cad[q];
-			}
-		}
-	}
-	return str;
+function p20(cad) {
+	return cad.replace(/%20/g, " ");
 }
 
-function rest(x) // array de imagenes o propiedad length del mismo como argumento.
-{
+function resto(x) { // array de imagenes o propiedad length del mismo como argumento.
 	// devuelve los elementos restantes de un array si no son divisibles por 4.
 	var res;
 	var ext;
-	if (typeof(x) == "object")
-	{
-		ext = x.length;
-	}
-	else if (typeof(x) == "number")
-	{
-		ext = x;
-	}
-	else
-	{
-		return null;
-	}
-	for (var i = ext; i > 0; i--)
-	{
-		if (!(i % 4 == 0))
-		{
+
+	if (typeof(x) == "object") ext = x.length;
+	else if (typeof(x) == "number") ext = x;
+	else return null;
+	
+	for (var i = ext; i > 0; i--) {
+		if (!(i % 4 == 0)) {
 			res = ext - (i - 1);
 		}
-		else
-		{
+		else {
 			if (res != undefined)
 				return res;
 			else
@@ -94,29 +49,19 @@ function rest(x) // array de imagenes o propiedad length del mismo como argument
 }
 
 // metodos llamados por el usuario 
-function seleccion()
-{
-	var tbPrinc = document.getElementById("tblprinc");
+function seleccion() {
+	var tbPrinc = document.getElementById("tblprinc"); // tabla principal
 	var fS = document.getElementById("fsobrante");
 	var fsT = document.getElementById("fstitulo");
 	var imgct = document.getElementById("imgcounter");
 	var ct = document.getElementById("ctodas");
 	var s = document.getElementById("vista");
 	var op = s.options[s.selectedIndex].value;
-	if (op == 1)
-	{
-		vista1();
-	}
-	else if (op == 2)
-	{
-		vista2();
-	}
-	else if (op == 3)
-	{
-		vista3();
-	}
-	else
-	{
+		
+	if (op == 1) { vista1(); }
+	else if (op == 2) { vista2(); }
+	else if (op == 3) { vista3(); }
+	else {
 		tbPrinc.innerHTML = null;
 		fsT.innerHTML = null;
 		fS.innerHTML = null;
@@ -125,43 +70,40 @@ function seleccion()
 	}
 }
 
-function vista1()
-{
-	try
-	{
+function vista1() {
+	try	{
 		var tblPrinc = document.getElementById("tblprinc");
 		var fsT = document.getElementById("fstitulo");
 		var fs = document.getElementById("fsobrante");
 		var imgct = document.getElementById("imgcounter");
 		var ct = document.getElementById("ctodas"); // contador de vista3 para borrar
-		ct.innerHTML = null;
 		
+		ct.innerHTML = null;
 		tblPrinc.innerHTML = TVista1;
+		
 		// se inicializa la imagen generada.
 		var imguno = document.getElementsByName("imguno");
+		
 		imguno[0].src = imgs[0];
 		imgct.innerHTML = "Imagen: 1/" + imgs.length;
 		
 		fsT.innerHTML = "";
 		fs.innerHTML = "";
 	}
-	catch (ex)
-	{
+	catch (ex) {
 		alert(ex.message);
 	}
 }
 
-function vista2()
-{
-	try
-	{
+function vista2() {
+	try {
 		var tblPrinc = document.getElementById("tblprinc");
 		var fs = document.getElementById("fsobrante"); // elemento tr donde se insertaran todas las celdas con las imagenes sobrantes.
 		var fst = document.getElementById("fstitulo"); // elemento td donde se escribira automaticamente un titulo si no esta vacio.
 		var imgct = document.getElementById("imgcounter");
 		var ct = document.getElementById("ctodas"); // contador de vista3 para borrar
-		ct.innerHTML = null;
 		
+		ct.innerHTML = null;
 		tblPrinc.innerHTML = TVista2;
 		
 		// se inicializan las imagenes generadas
@@ -170,16 +112,14 @@ function vista2()
 		// calcS: calculos para mostrar imagenes sobrantes
 		var imgsDeMas = [];
 		var imgsC = [].copy(imgs);
-		var exc = rest(imgsC);
-		for (var q = imgsC.length; q > 0; q--)
-		{
-			if (q % 4 != 0)
-			{
+		var exc = resto(imgsC);
+		
+		for (var q = imgsC.length; q > 0; q--) {
+			if (q % 4 != 0) {
 				imgsDeMas.push(imgsC[q - 1]);
 				imgsC.pop();
 			}
-			else
-			{
+			else {
 				imgsDeMas.reverse();
 				break;
 			}
@@ -187,237 +127,199 @@ function vista2()
 		// fin calcS
 		
 		if (exc > 0)
-		{
 			imgct.innerHTML = "Imagenes sobrantes en mosaico: " + exc + "; Imagenes: 1-4/" + (imgsC.length - exc); // iniciar contador
-		}
 		else
-		{
 			imgct.innerHTML = "Imagenes: 1-4/" + (imgsC.length - exc); // iniciar contador
-		}
 		
 		for (var q = 0; q < imgcuadro.length; q++)
-		{
 			imgcuadro[q].src = imgsC[q];
-		}
 		
-		if (imgsDeMas.length > 0)
-		{
-			for (var q = 0; q < imgsDeMas.length; q++)
-			{
+		if (imgsDeMas.length > 0) {
+			for (var q = 0; q < imgsDeMas.length; q++) {
 				fst.innerHTML = "Im&aacute;genes sobrantes";
 				fst.setAttribute("colspan", imgsDeMas.length);
+
 				var td = document.createElement("td");
 				var nImg = document.createElement("img");
+				
 				td.appendChild(nImg);
 				fs.appendChild(td);
 				nImg.height = 150;
 				nImg.width = 150;
 				nImg.src = imgsDeMas[q];
 				nImg.style.cursor = 'pointer';
-				nImg.title = "Abrir en una nueva pestaña";
+				nImg.title = "Abrir en una nueva pestaÃ±a";
+				
 				nImg.onclick = function() {
 					window.open(this.src);
 				}
 			}
 		}
 	}
-	catch (ex)
-	{
+	catch (ex) {
 		alert(ex.message);
 	}
 }
 
-function vista3() // vista de todas las imagenes de manera simultanea.
-{
-	try
-	{
+function vista3() { // vista de todas las imagenes de manera simultanea.
+	try {
 		var tbPrinc = document.getElementById("tblprinc");
 		var fsT = document.getElementById("fstitulo"); // para borrar el contenido de la tabla de imagenes sobrantes y mostrar otra vista.
 		var fs = document.getElementById("fsobrante"); // para borrar el contenido de la tabla de imagenes sobrantes y mostrar otra vista.
 		var imgct = document.getElementById("imgcounter");
 		var ct = document.getElementById("ctodas");
-		var exc = rest(imgs);
-		vista1(); // obigatorio para mostrar la vista3. si no se llama, la tabla principal se queda vacia.
+		var exc = resto(imgs);
+		
+		vista1(); // obligatorio para mostrar la vista3. si no se llama, la tabla principal se queda vacia.
+		
 		tbPrinc.innerHTML = "";
 		fsT.innerHTML = "";
 		fs.innerHTML = "";
 		imgct.innerHTML = "";
 		ct.innerHTML = imgs.length + " imagenes";
 		
-		for (var i = 0; i < imgs.length; i++)
-		{
+		for (var i = 0; i < imgs.length; i++) {
 			var tr = document.createElement("tr");
-			for (var q = 0; q < 4; q++)
-			{
-				if (imgs[i] != undefined)
-				{
+
+			for (var q = 0; q < 4; q++) {
+				if (imgs[i] != undefined) {
 					var td = document.createElement("td");
 					var nImg = document.createElement("img");
+
 					td.appendChild(nImg);
 					tr.appendChild(td);
 					nImg.height = 200;
 					nImg.width = 200;
 					nImg.src = imgs[i];
+					
 					if (q < 3)
-					{
 						i++;
-					}
 				}
-			}
+			} // for interior
+
 			tbPrinc.appendChild(tr);
-		}
+		} // for exterior
 	}
-	catch (ex)
-	{
+	catch (ex) {
 		alert(ex.message);
 	}
 }
 
-function anterior(nVista)
-{
+function anterior(nVista) {
 	var imgActual;
 	var nom;
-	if (nVista == 1) // vista de una
-	{
+
+	if (nVista == 1) { // vista de una
 		imgActual = document.getElementsByName("imguno");
 		nom = p20(imgActual[0].src.substring(imgActual[0].src.indexOf("nbs")));
+
 		var imgct = document.getElementById("imgcounter");
 		var n_img = imgs.indexOf(nom);
-		if (imgActual[0].src != imgs[0])
-		{
-			for (var q = 0; q < imgs.length; q++)
-			{
-				if (imgs[q] == nom)
-				{
-					if (imgs[q - 1] != undefined)
-					{
-						imgActual[0].src = imgs[q - 1];
-						n_img--;
+		
+		if (imgActual[0].src != imgs[0]) {
+			for (var q = 0; q < imgs.length; q++) {
+				if (imgs[q] == nom) {
+					if (imgs[q - 1] != undefined) {
+						imgActual[0].src = imgs[n_img--]; // *** INTENTAR USAR n_img como indice
 						imgct.innerHTML = "Imagen: " + (n_img + 1) + "/" + imgs.length;
 					}
 				}
-			} // fin for interior
-		} // fin for exterior
+			} // fin for
+		}
 	}
-	else if (nVista == 2) // vista de cuatro
-	{
+	else if (nVista == 2) { // vista de cuatro
 		imgActual = document.getElementsByName("imgcuadro");
+		
 		var imgct = document.getElementById("imgcounter");
-		var exc = rest(imgs);
+		var exc = resto(imgs);
 		var n_img = [0, 0];
-		for (var q = 0; q < imgActual.length; q++)
-		{
+		
+		for (var q = 0; q < imgActual.length; q++) {
 			nom = p20(imgActual[q].src.substring(imgActual[q].src.indexOf("nbs")));
+
 			if (q == 0)
-			{
 				n_img[0] = imgs.indexOf(nom);
-			}
 			else if (q == 3)
-			{
 				n_img[1] = imgs.indexOf(nom);
-			}
-			for (var i = 0; i < imgs.length; i++)
-			{
-				if (imgs[i] == nom)
-				{
-					if (imgs[i - 4] != undefined)
-					{
+			
+			for (var i = 0; i < imgs.length; i++) {
+				if (imgs[i] == nom) {
+					if (imgs[i - 4] != undefined) {
 						imgActual[q].src = imgs[i - 4];
+
 						if (q == 0)
-						{
 							n_img[0] -= 4;
-						}
 						else if (q == 3)
-						{
 							n_img[1] -= 4;
-						}
+						
 						if (exc > 0)
-						{
 							imgct.innerHTML = "Imagenes sobrantes en mosaico: " + exc + "; Imagenes: " + (n_img[0] + 1) + "-" + (n_img[1] + 1) + "/" + (imgs.length - exc); // iniciar contador
-						}
 						else
-						{
 							imgct.innerHTML = "Imagenes: " + (n_img[0] + 1) + "-" + (n_img[1] + 1) + "/" + (imgs.length - exc); // iniciar contador
-						}
 					}
 				}
-			}
-		}
+			} // for interior
+		} // for exterior
 	}
 }
 
-function siguiente(nVista)
-{
+function siguiente(nVista) {
 	var imgActual;
 	var nom;
-	if (nVista == 1)
-	{
+
+	if (nVista == 1) {
 		imgActual = document.getElementsByName("imguno");
 		nom = p20(imgActual[0].src.substring(imgActual[0].src.indexOf("nbs")));
+
 		var imgct = document.getElementById("imgcounter");
 		var n_img = imgs.indexOf(nom);
-		if (imgActual[0].src != imgs[imgs.length - 1])
-		{
-			for (var q = 0; q < imgs.length; q++)
-			{
-				if (imgs[q] == nom)
-				{
-					if (imgs[q + 1] != undefined)
-					{
+
+		if (imgActual[0].src != imgs[imgs.length - 1]) {
+			for (var q = 0; q < imgs.length; q++) {
+				if (imgs[q] == nom)	{
+					if (imgs[q + 1] != undefined) {
 						imgActual[0].src = imgs[q + 1];
 						n_img++;
 						imgct.innerHTML = "Imagen: " + (n_img + 1) + "/" + imgs.length;
 					}
 				}
-			} // fin for interior
-		} // fin for exterior
+			} // fin for
+		}
 	}
-	else if (nVista == 2)
-	{
+	else if (nVista == 2) {
 		imgActual = document.getElementsByName("imgcuadro");
+
 		var imgct = document.getElementById("imgcounter");
 		var n_img = [0, 0];
-		var exc = rest(imgs);
-		for (var q = 0; q < imgActual.length; q++)
-		{
+		var exc = resto(imgs);
+		
+		for (var q = 0; q < imgActual.length; q++) {
 			nom = p20(imgActual[q].src.substring(imgActual[q].src.indexOf("nbs")));
+
 			if (q == 0)
-			{
 				n_img[0] = imgs.indexOf(nom);
-			}
 			else if (q == 3)
-			{
 				n_img[1] = imgs.indexOf(nom);
-			}
-			for (var i = 0; i < imgs.length; i++)
-			{
-				if (imgs[i] == nom)
-				{
-					if (imgs[i + 4] != undefined)
-					{
-						if ((i + 4) < (imgs.length - exc))
-						{
+			
+			for (var i = 0; i < imgs.length; i++) {
+				if (imgs[i] == nom) {
+					if (imgs[i + 4] != undefined) {
+						if ((i + 4) < (imgs.length - exc)) {
 							imgActual[q].src = imgs[i + 4];
+
 							if (q == 0)
-							{
 								n_img[0] += 4;
-							}
 							else if (q == 3)
-							{
 								n_img[1] += 4;
-							}
+
 							if (exc > 0)
-							{
 								imgct.innerHTML = "Imagenes sobrantes en mosaico: " + exc + "; Imagenes: " + (n_img[0] + 1) + "-" + (n_img[1] + 1) + "/" + (imgs.length - exc); // iniciar contador
-							}
 							else
-							{
 								imgct.innerHTML = "Imagenes: " + (n_img[0] + 1) + "-" + (n_img[1] + 1) + "/" + (imgs.length - exc); // iniciar contador
-							}
 						}
 					}
 				}
-			}
-		}
+			} // for interior
+		} // for exterior
 	}
 }

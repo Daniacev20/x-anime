@@ -29,16 +29,18 @@ function contarCaracteres(event) {
 
 function formReset() {
 	var cCont = document.getElementById("ccont");
-	if (cCont.innerHTML.charAt(0) != '0') {
+
+	if (cCont.innerHTML.charAt(0) != '0')
 		cCont.innerHTML = "0/200";
-	}
 }
 
 function valEmail() {
 	var soportados = ["gmail.com", "hotmail.com", "live.com", "outlook.com", "yahoo.com", "hotmail.es", "live.es", "outlook.es", "yahoo.es", "facebook.com"];
 	var txtemail = document.getElementById("txtemail");
+
 	if(txtemail.value.indexOf('@') == -1) {
 		alert("Esto no es un correo electr\u00f3nico.");
+	
 		txtemail.value = null;
 		txtemail.focus();
 	}
@@ -50,6 +52,7 @@ function valEmail() {
 			else {
 				if (soportados[i] == soportados[soportados.length - 1]) {
 					alert("Solo se admiten mensajes de los siguientes servidores y respectivos dominios:\n\n" + soportados.join('\n'));
+	
 					txtemail.value = null;
 					txtemail.focus();
 				}
@@ -62,10 +65,10 @@ function contarComentarios() {
 	var divs = document.getElementsByTagName("div");
 	var nComent = document.getElementById("ncomentarios");
 	var cTotal = 0;
-	for (var i = 0; i < divs.length; i++) {
-		if (divs[i].className == "comentado") {
+	
+	for (var i = 0; i < divs.length; i++)
+		if (divs[i].className == "comentado")
 			cTotal++;
-		}
-	}
+	
 	nComent.innerHTML = "No. de comentarios: " + cTotal;
 }

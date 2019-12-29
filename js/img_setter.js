@@ -2,8 +2,10 @@
 function setImgTitle() {
 	try {
 		var nombre;
+		
 		for (var i=0; i<document.images.length; i++) {
 			var ii = document.images[i];
+
 			if (ii.title != "") {
 				continue;
 			}
