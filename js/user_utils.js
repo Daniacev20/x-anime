@@ -278,8 +278,7 @@ function siguiente(nVista) {
 			for (var q = 0; q < imgs.length; q++) {
 				if (imgs[q] == nom)	{
 					if (imgs[q + 1] != undefined) {
-						imgActual[0].src = imgs[q + 1];
-						n_img++;
+						imgActual[0].src = imgs[n_img++];
 						imgct.innerHTML = "Imagen: " + (n_img + 1) + "/" + imgs.length;
 					}
 				}
